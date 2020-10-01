@@ -1,0 +1,132 @@
+{
+  "name": "react-dsp-web-playback",
+  "version": "0.7.0",
+  "description": "A React Spotify Web Player",
+  "author": "Gil Barbara <gilbarbara@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gilbarbara/react-spotify-web-playback.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gilbarbara/react-spotify-web-playback/issues"
+  },
+  "homepage": "https://github.com/gilbarbara/react-spotify-web-playback#readme",
+  "main": "lib/index.js",
+  "files": [
+    "esm",
+    "lib",
+    "src"
+  ],
+  "types": "lib",
+  "sideEffects": true,
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "react-component",
+    "spotify",
+    "player",
+    "web playback"
+  ],
+  "peerDependencies": {
+    "react": "^16.8.0"
+  },
+  "dependencies": {
+    "@gilbarbara/react-range-slider": "^0.5.0",
+    "co": "^4.6.0",
+    "exenv": "^1.2.2",
+    "memoize-one": "^5.1.1",
+    "nano-css": "^5.3.0"
+  },
+  "devDependencies": {
+    "@gilbarbara/tsconfig": "^0.1.0",
+    "@size-limit/preset-small-lib": "^4.5.7",
+    "@types/co": "^4.6.2",
+    "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/exenv": "^1.2.0",
+    "@types/jest": "^26.0.13",
+    "@types/node": "^14.6.4",
+    "@types/once": "^1.4.0",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "del-cli": "^3.0.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.4",
+    "enzyme-to-json": "^3.5.0",
+    "eslint": "^7.8.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
+    "fetch-mock": "^8.3.2",
+    "husky": "^4.2.5",
+    "is-ci-cli": "^2.1.2",
+    "jest": "^26.4.2",
+    "jest-chain": "^1.1.5",
+    "jest-enzyme": "^7.1.2",
+    "jest-extended": "^0.11.5",
+    "jest-serializer-html": "^7.0.0",
+    "jest-watch-typeahead": "^0.6.1",
+    "lint-staged": "^10.3.0",
+    "node-fetch": "^2.6.1",
+    "prettier": "^2.1.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "repo-tools": "^0.2.0",
+    "size-limit": "^4.5.7",
+    "ts-jest": "^26.3.0",
+    "typescript": "^4.0.2"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc",
+    "build:esm": "tsc -m es6 --outDir esm",
+    "clean": "del lib/* && del esm/*",
+    "watch:cjs": "npm run build:cjs -- -w",
+    "watch:esm": "npm run build:esm -- -w",
+    "test": "is-ci \"test:coverage\" \"test:watch\"",
+    "test:coverage": "jest --bail --coverage",
+    "test:watch": "jest --watch --verbose",
+    "lint": "eslint --ext .ts,.tsx src test",
+    "format": "prettier \"**/*.{js,jsx,json,yml,yaml,css,less,scss,ts,tsx,md,graphql,mdx}\" --write",
+    "validate": "npm run lint && npm run test:coverage && npm run build && npm run size",
+    "size": "size-limit",
+    "prepublishOnly": "npm run validate"
+  },
+  "prettier": {
+    "jsxBracketSameLine": false,
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "lint-staged": {
+    "*.(ts|tsx)": [
+      "eslint --fix",
+      "jest --bail --findRelatedTests"
+    ],
+    "*.(js|jsx|json|yml|yaml|ts|tsx|md|mdx)": [
+      "prettier --write"
+    ]
+  },
+  "size-limit": [
+    {
+      "path": "./esm/index.js",
+      "limit": "18 KB"
+    },
+    {
+      "path": "./lib/index.js",
+      "limit": "18 KB"
+    }
+  ],
+  "husky": {
+    "hooks": {
+      "post-merge": "repo-tools install-packages",
+      "pre-commit": "repo-tools check-remote && lint-staged"
+    }
+  }
+}
