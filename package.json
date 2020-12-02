@@ -2,15 +2,15 @@
   "name": "react-dsp-web-playback",
   "version": "0.7.0",
   "description": "A React Spotify Web Player",
-  "author": "Gil Barbara <gilbarbara@gmail.com>",
+  "author": "Akita Emmanuel <e.akita91@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/gilbarbara/react-spotify-web-playback.git"
+    "url": "https://github.com/Emmynash/react-apple-spotify-player.git"
   },
   "bugs": {
-    "url": "https://github.com/gilbarbara/react-spotify-web-playback/issues"
+    "url": "https://github.com/Emmynash/react-apple-spotify-player.git/issues"
   },
-  "homepage": "https://github.com/gilbarbara/react-spotify-web-playback#readme",
+  "homepage": "https://github.com/Emmynash/react-apple-spotify-player.git#readme",
   "main": "lib/index.js",
   "files": [
     "esm",
@@ -24,6 +24,7 @@
     "react",
     "react-component",
     "spotify",
+    "apple",
     "player",
     "web playback"
   ],

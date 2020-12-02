@@ -30,6 +30,7 @@ const LoginWithAppleButton = ({
   const handleLoginClick = () => {
     co(function* () {
       let key = yield musicInstance.authorize();
+      console.log(key);
       if (key) {
         setAuthState(true);
       }
