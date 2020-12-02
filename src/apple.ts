@@ -65,24 +65,14 @@ export async function play() {
   // });
 }
 
-export async function previous(token: string) {
-  return fetch(`https://api.spotify.com/v1/me/player/previous`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    },
-    method: 'POST',
-  });
+export async function previous() {
+  (window as any).musicKitInstance.previous();
+  console.log((window as any).musicKitInstance);
 }
 
-export async function next(token: string) {
-  return fetch(`https://api.spotify.com/v1/me/player/next`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    },
-    method: 'POST',
-  });
+export async function next() {
+  (window as any).musicKitInstance.next();
+  console.log((window as any).musicKitInstance);
 }
 
 export async function removeTracks(token: string, tracks: string | string[]) {
